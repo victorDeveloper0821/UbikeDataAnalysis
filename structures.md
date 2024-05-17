@@ -1,18 +1,30 @@
-# Markdown Files
+# Structures
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+Hi there, this page will introduce the folder structure in this repository. 
 
-## What is MyST?
+In order to illustrate data analysis with visualization, The project is a jupyter-notebook based. 
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
+## What is in my project?
+Use `tree myrepo/` to show your structures of directories
 
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
+```
+├── _build
+├── _config.yml
+├── _toc.yml
+├── data
+├── intro.md
+├── logo.png
+├── markdown-notebooks.md
+├── notebooks.ipynb
+├── references.bib
+├── requirements.txt
+├── structures.md
+└── youBikeAnalytics.ipynb
+```
+- _config.yml, _toc.yml, generted by jupyter-book command are used to set up layouts of the websites. 
+- Introduction is written as markdown format; clips of Python source codes and chart graphs are shown in ipynb. 
+
+- data, which stores csv of sharing bikes with time. 
 
 ## Sample Roles and Directives
 
@@ -33,21 +45,6 @@ It will be rendered in a special box when you build your book.
 
 Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
 
-
-## Citations
-
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
-
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
-
-```{bibliography}
-```
 
 ## Learn more
 

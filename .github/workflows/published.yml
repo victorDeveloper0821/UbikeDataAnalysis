@@ -1,4 +1,4 @@
-name: Deploy Jupyter Book to Minify
+name: Deploy Jupyter Book to Netlify
 
 on:
   push:
@@ -27,13 +27,12 @@ jobs:
       - name: Build Jupyter Book
         run: jupyter-book build .
 
-      - name: Deploy to Minify
+      - name: Deploy to Netlify
         env:
-          MINIFY_API_KEY: ${{ secrets.MINIFY_API_KEY }}  # 確保在 GitHub Secrets 中配置 Minify API 金鑰
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          # 進入 _build/html 目錄
-          cd _build/html
-          # 壓縮文件為 ZIP 包
-          zip -r site.zip .
-          # 使用 Minify API 上傳 ZIP 包
-          curl -X POST -H "Authorization: Bearer $MINIFY_API_KEY" -F "file=@site.zip" https://api.minify.com/v1/deploy
+          # 安裝 netlify-cli
+          npm install -g netlify-cli
+          # 部署到 Netlify
+          netlify deploy --dir=_build/html --prod --site=$NETLIFY_SITE_ID
